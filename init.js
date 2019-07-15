@@ -48,7 +48,6 @@ function rackRolls(arr) {
 }
 
 function triageScore(obj) {
-  //receives argument of 1 dimensional associative array, { 'face_value_1' : #ofInstances1, //etc. }
   var result = obj;
   if (obj.isRun) {
     result = "run"
@@ -64,19 +63,22 @@ function triageScore(obj) {
   return result
 }
 
-function scoreGroup(obj, quant) {
+function scoreGroup(obj) {
+  var score = 0
   var keys = Object.keys(obj)
-}
-
-function testForRun(arr) {
-
+  var factor = (keys[0] === 1) ? obj[keys[0]] : keys[0]
+  if (obj[keys[i]] > 3) {
+    score = "above 3"
+  } else {
+    score = factor * 100
+  }
 }
 
 var roll_arr = diceRoll(6, 6)
 var results = (qualify(roll_arr, 1, 5)) ? rackRolls(roll_arr) : false
 var turn_log = (results) ? results : "farkle"
 var scores = (results) ? triageScore(turn_log) : "farkle"
+var score = (results.ofAKind) ? scoreGroup(results.ofAKind) : "no score group"
 console.log(roll_arr)
 console.log(turn_log)
-console.log(fake_turn_log)
 console.log(scores)
