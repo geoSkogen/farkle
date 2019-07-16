@@ -22,6 +22,10 @@ function rackRolls(arr) {
   var run_score = ""
   var pair_score = 0
   var trio_score = 0
+  var four_score = 0
+  var six_score = 0
+  var no_score = []
+  var raw_score = []
   var rack_prop = {}
   var of_a_kind = false
   for (let i = 0; i < arr.length; i++) {
@@ -38,27 +42,43 @@ function rackRolls(arr) {
     rack_prop[keys[i]] = result[keys[i]]
     pair_score += (result[keys[i]] === 2) ? 1 : 0
     trio_score += (result[keys[i]] === 3) ? 1 : 0
-    of_a_kind = (result[keys[i]] >= 3) ? rack_prop : false
+    four_score += (result[keys[i]] === 4) ? 1 : 0
+    six_score += (result[keys[i]] === 6) ? 1 : 0
+    of_a_kind = (result[keys[i]] > 2) ? rack_prop : of_a_kind
+    if (result[keys[i]] < 3) {
+      for (let ii = 0; ii < result[keys[i]]; ii++) {
+        if (keys[i] === '1' || keys[i] === '5') {
+          raw_score.push(keys[i])
+        } else {
+          no_score.push(keys[i])
+        }
+      }
+    }
   }
-  result.isRun = (run_score.length === arr.length) ? true : false
-  result.isThreePairs = (pair_score === 3) ?  true : false
-  result.isTwoTrios = (trio_score === 2) ?  true : false
-  result.ofAKind = (result.isTwoTrios) ? false : of_a_kind
+  if (run_score.length === arr.length) {
+    result.test_score = 1500
+  } else if (pair_score === 3) {
+    result.test_score = 1500
+  } else if (trio_score === 2) {
+    result.test_score = 2500
+  } else if (pair_score === 1 && four_score === 1) {
+    result.test_score = 1500
+  } else if (six_score === 1) {
+    result.test_score = 3000
+  } else {
+    result.test_score = {
+      ofAKind : of_a_kind,
+      noScore : no_score,
+      rawScore : raw_score
+    }
+  }
   return result
 }
 
 function triageScore(obj) {
   var result = obj;
-  if (obj.isRun) {
-    result = "run"
-  } else if (obj.isThreePairs) {
-    results = "three pairs"
-  } else if (obj.isTwoTrios){
-    results = "two trios"
-  } else if (obj.ofAKind) {
-    results = obj.ofAKind.toString()
-    results += " of a kind "
-    results += Object.keys(obj.ofAKind)[0]
+  if (!Number(obj)) {
+    result = obj
   }
   return result
 }
@@ -67,10 +87,17 @@ function scoreGroup(obj) {
   var score = 0
   var keys = Object.keys(obj)
   var factor = (keys[0] === 1) ? obj[keys[0]] : keys[0]
-  if (obj[keys[i]] > 3) {
-    score = "above 3"
-  } else {
-    score = factor * 100
+  switch (obj[keys[0]]) {
+    case 3 :
+      score = factor * 100
+    case 4 :
+      score = 1000
+      break
+    case 5 :
+      score = 2000
+      break
+    default:
+      console.log("in a pig's eye")
   }
 }
 
@@ -78,7 +105,6 @@ var roll_arr = diceRoll(6, 6)
 var results = (qualify(roll_arr, 1, 5)) ? rackRolls(roll_arr) : false
 var turn_log = (results) ? results : "farkle"
 var scores = (results) ? triageScore(turn_log) : "farkle"
-var score = (results.ofAKind) ? scoreGroup(results.ofAKind) : "no score group"
 console.log(roll_arr)
 console.log(turn_log)
 console.log(scores)
