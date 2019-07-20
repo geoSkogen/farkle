@@ -16,8 +16,35 @@ function qualify(arr, val1, val2) {
   return result
 }
 
+function scoreRaw(arr) {
+  var result = 0
+  arr.forEach( (e) => {
+    result += (Number(e) === 1) ? 100 : 50
+  })
+  return result
+}
+
+function scoreGroup(obj) {
+  var score = 0
+  var keys = Object.keys(obj)
+  var factor = (keys[0] === 1) ? obj[keys[0]] : keys[0]
+  switch (obj[keys[0]]) {
+    case 3 :
+      score = factor * 100
+    case 4 :
+      score = 1000
+      break
+    case 5 :
+      score = 2000
+      break
+    default:
+      score = 0
+  }
+  return score
+}
+
 function rackRolls(arr) {
-  var result = {}
+  var result = { test_score : 0 }
   var keys = []
   var run_score = ""
   var pair_score = 0
@@ -55,7 +82,7 @@ function rackRolls(arr) {
       }
     }
   }
-  if (run_score.length === arr.length) {
+  if (run_score.length === dice_rolls) {
     result.test_score = 1500
   } else if (pair_score === 3) {
     result.test_score = 1500
@@ -66,45 +93,18 @@ function rackRolls(arr) {
   } else if (six_score === 1) {
     result.test_score = 3000
   } else {
-    result.test_score = {
-      ofAKind : of_a_kind,
-      noScore : no_score,
-      rawScore : raw_score
-    }
+    result.test_score += (of_a_kind) ? scoreGroup(of_a_kind) : 0
+    result.test_score += (raw_score.length) ? scoreRaw(raw_score) : 0
   }
   return result
 }
 
-function triageScore(obj) {
-  var result = obj;
-  if (!Number(obj)) {
-    result = obj
-  }
-  return result
-}
-
-function scoreGroup(obj) {
-  var score = 0
-  var keys = Object.keys(obj)
-  var factor = (keys[0] === 1) ? obj[keys[0]] : keys[0]
-  switch (obj[keys[0]]) {
-    case 3 :
-      score = factor * 100
-    case 4 :
-      score = 1000
-      break
-    case 5 :
-      score = 2000
-      break
-    default:
-      console.log("in a pig's eye")
-  }
-}
-
-var roll_arr = diceRoll(6, 6)
+var score_arr = [0]
+var turn_index = 0
+var dice_rolls = 6
+var roll_arr = diceRoll(dice_rolls, 6)
 var results = (qualify(roll_arr, 1, 5)) ? rackRolls(roll_arr) : false
 var turn_log = (results) ? results : "farkle"
-var scores = (results) ? triageScore(turn_log) : "farkle"
+
 console.log(roll_arr)
 console.log(turn_log)
-console.log(scores)
