@@ -95,6 +95,7 @@ function rackRolls(arr) {
   } else {
     result.test_score += (of_a_kind) ? scoreGroup(of_a_kind) : 0
     result.test_score += (raw_score.length) ? scoreRaw(raw_score) : 0
+    result.no_score = (no_score.length) ? no_score : false  
   }
   return result
 }
