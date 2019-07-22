@@ -1,0 +1,30 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+div.flexOuterCenter {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+div.die {
+  margin: 1em;
+  padding: 0.75em;
+}
+
+div#roll_button {
+  background-color: cornflowerblue;
+  color: white;
+  width: 4em;
+  border-radius: 3px;
+  padding: 0.75em;
+  margin: 1em;
+  text-align: center;
+  cursor: pointer;
+}
+
+div#go_button:hover {
+  cursor: pointer;
+  background-color: black;
+}
