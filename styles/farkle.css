@@ -2,15 +2,32 @@ body {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-div.flexOuterCenter {
+div.flexOuterCenter,
+div.flexOuterStart,
+div.flexOuterEnd {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
 }
 
+div.flexOuterStart {
+  justify-content: flex-start;
+}
+
+div.flexOuterEnd {
+  justify-content: flex-end;
+}
+
 div.die {
   margin: 1em;
   padding: 0.75em;
+}
+
+div.diegram {
+  width: 5em;
+  height: 5em;
+  margin: 1em;
+  border: 1px solid red;
 }
 
 div#roll_button {
