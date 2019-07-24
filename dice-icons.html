@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>
+    Farkle
+  </title>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css'
+    integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ'
+    crossorigin='anonymous'>
+  <link rel="stylesheet" href="styles/farkle.css"/>
+</head>
+<body>
+
+<div class="flexOuterCenter">
+  <div id="one1" class="diegram">
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:28px 10px;"></i>
+    </div>
+  </div>
+  <div id="two2" class="diegram">
+    <div class="flexOuterEnd">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+    <div style="height:16px;"></div>
+    <div class="flexOuterStart">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+  </div>
+  <div id="three3" class="diegram">
+    <div class="flexOuterEnd">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle"></i>
+    </div>
+    <div class="flexOuterStart">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+  </div>
+  <div id="four4" class="diegram">
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i><i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+    <div style="height:16px;"></div>
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i><i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+  </div>
+  <div id="five5" class="diegram">
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i><i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle"></i>
+    </div>
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i><i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+  </div>
+  <div id="six6" class="diegram">
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i><i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:0px 10px;"></i><i class="fas fa-circle" style="border: 1px solid blue;padding:0px 10px;"></i>
+    </div>
+    <div class="flexOuterCenter">
+      <i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i><i class="fas fa-circle" style="border: 1px solid blue;padding:6px 10px;"></i>
+    </div>
+  </div>
+</div>
+<br/>
+<div id="bibbity">b1</div>
+<div id="bobbity">b2</div>
+<div id="boo">b3</div>
+
+</body>
+<script>
+window.addEventListener('load', () => {
+
+  function reportToHQ(id,str,val) {
+    console.log("action: " + id)
+    console.log("category: " + str)
+    console.log("value: " + val)
+  }
+
+  function makeThemClick(obj,str) {
+    obj.addEventListener("click", () => {
+      reportToHQ(str,"HQ","1")
+    })
+  }
+
+  var ids = ["#bibbity","#bobbity","#boo"]
+  var el = {}
+  if (window.location.href.indexOf("dice-icons") != -1) {
+    for (let i = 0; i < ids.length; i++) {
+      el = document.querySelector(ids[i])
+      makeThemClick(el,el.id)
+    }
+  }
+})
+</script>
+</html

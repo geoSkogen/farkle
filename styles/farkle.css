@@ -45,3 +45,21 @@ div#go_button:hover {
   cursor: pointer;
   background-color: black;
 }
+
+#bibbity,#bobbity,#boo {
+  width: 40px;
+  height: 40px;
+  color: white;
+}
+
+#bibbity {
+  background-color: red;
+}
+
+#bobbity {
+  background-color: blue;
+}
+
+#boo {
+  background-color: green;
+}
