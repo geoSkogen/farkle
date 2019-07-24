@@ -30,7 +30,8 @@ div.diegram {
   border: 1px solid red;
 }
 
-div#roll_button {
+div#roll_button,
+div#re_roll_button {
   background-color: cornflowerblue;
   color: white;
   width: 4em;
