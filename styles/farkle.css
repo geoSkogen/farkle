@@ -31,7 +31,9 @@ div.diegram {
 }
 
 div#roll_button,
-div#re_roll_button {
+div#re_roll_button,
+div#no_roll_button,
+div#your_turn_button {
   background-color: cornflowerblue;
   color: white;
   width: 4em;
@@ -42,7 +44,7 @@ div#re_roll_button {
   cursor: pointer;
 }
 
-div#go_button:hover {
+div.go_button:hover {
   cursor: pointer;
   background-color: black;
 }
