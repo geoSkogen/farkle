@@ -27,7 +27,9 @@ div.diegram {
   width: 5em;
   height: 5em;
   margin: 1em;
-  border: 1px solid red;
+  border: 1.5px solid black;
+  padding: 6px 0 0 0; 
+  border-radius: 4px;
 }
 
 div#roll_button,
