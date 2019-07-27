@@ -27,15 +27,16 @@ div.diegram {
   width: 5em;
   height: 5em;
   margin: 1em;
-  border: 1.5px solid black;
-  padding: 6px 0 0 0; 
+  border: 2px solid black;
+  padding: 6px 0 0 0;
   border-radius: 4px;
 }
 
-div#roll_button,
-div#re_roll_button,
-div#no_roll_button,
-div#your_turn_button {
+div.diegram_highlight {
+  border: 2px solid firebrick;
+}
+
+div.go_button {
   background-color: cornflowerblue;
   color: white;
   width: 4em;
