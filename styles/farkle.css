@@ -4,7 +4,9 @@ body {
 
 div.flexOuterCenter,
 div.flexOuterStart,
-div.flexOuterEnd {
+div.flexOuterEnd,
+div.flexOuterSpace,
+div.row_throw {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -16,6 +18,11 @@ div.flexOuterStart {
 
 div.flexOuterEnd {
   justify-content: flex-end;
+}
+
+div.flexOuterSpace,
+div.row_throw {
+  justify-content: space-around;
 }
 
 div.die {
@@ -53,6 +60,15 @@ div.go_button:hover {
   background-color: black;
 }
 
+div.die_face,
+div.row_label,
+div.row_score,
+div.total_label,
+div.total_score {
+  padding: 1em;
+  margin: 1em;
+  width: 6em;
+}
 #bibbity,#bobbity,#boo {
   width: 40px;
   height: 40px;
