@@ -62,7 +62,6 @@ div.go_button:hover {
 
 div.row_tag {
   padding: 8px;
-  margin: 0 8px;
   background-color:black;
   color: white;
   font-weight: 800;
@@ -70,6 +69,20 @@ div.row_tag {
   border-radius: 4px;
   text-align: center;
   opacity: 0.6;
+  position: absolute;
+  left: 8%;
+}
+
+@media only screen and (min-width: 420px) {
+  div.row_tag {
+    left: 26%;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  div.row_tag {
+    left: 36%;
+  }
 }
 
 div.die_face,
